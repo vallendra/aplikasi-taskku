@@ -30,7 +30,9 @@ import "./App.css";
 // Komponen Header
 // Return elemen Heeader
 const Header = () => {
-  return <h1>Aplikasi Taskku 📝</h1>
+  return <h1>Aplikasi Taskku
+    <span role="img" aria-label="note">📝</span>
+    </h1>
 }
 
 // Komponen Infobar
@@ -63,12 +65,12 @@ const TaskAdder = ({ setTasks, tasks }) => {
 
   return <div className="task-adder">
     {/* Kita gunakan komponen UI luar berdasarkan dokumentasi yang diberikan */}
-    <TextField 
-      value={currentValue} 
+    <TextField
+      value={currentValue}
       // Jika field berubah, maka...
-      onChange={event => setCurrentValue(event.target.value)} 
-      label="Tambah task" 
-      variant="outlined" 
+      onChange={event => setCurrentValue(event.target.value)}
+      label="Tambah task"
+      variant="outlined"
     />
     <Button
       variant="contained"
@@ -119,8 +121,8 @@ const Task = ({ message, id, setTasks, tasks }) => {
 const TaskList = ({ tasks, setTasks }) => {
   // Lakukan iterasi pada setiap item pada array si tasks
   // Di setiap item pada si tasks, kita akan return sebuah komponen <Task />
-  return tasks.map(task => {
-    return <Task message={task.message} id={task.id} setTasks={setTasks} tasks={tasks} />
+  return tasks.map((task, index) => {
+    return <Task message={task.message} id={task.id} setTasks={setTasks} tasks={tasks} key={index} />
   })
 }
 
